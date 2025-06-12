@@ -1,16 +1,22 @@
+import axios from 'axios';
 
-const API_KEY = "50461526-1c4ae7086be4914a89297c276"; 
+const API_KEY = "50461526-1c4ae7086be4914a89297c276";
+const BASE_URL = "https://pixabay.com/api/";
 
 export async function fetchImages(query) {
-  const url = `https://pixabay.com/api/?key=${API_KEY}&q=${encodeURIComponent(
-    query
-  )}&image_type=photo&orientation=horizontal&safesearch=true`;
+  try {
+    const response = await axios.get(BASE_URL, {
+      params: {
+        key: API_KEY,
+        q: query,
+        image_type: 'photo',
+        orientation: 'horizontal',
+        safesearch: true,
+      },
+    });
 
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error("API isteği başarısız");
+    return response.data.hits; // eklendi
+  } catch (error) {
+    throw new Error("API isteği başarısız: " + error.message);
   }
-
-  const data = await response.json();
-  return data;
 }
