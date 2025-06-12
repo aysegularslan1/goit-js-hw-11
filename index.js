@@ -1,17 +1,17 @@
-import{S as l,i as c}from"./assets/vendor-BrddEoy-.js";(function(){const n=document.createElement("link").relList;if(n&&n.supports&&n.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))s(t);new MutationObserver(t=>{for(const o of t)if(o.type==="childList")for(const a of o.addedNodes)a.tagName==="LINK"&&a.rel==="modulepreload"&&s(a)}).observe(document,{childList:!0,subtree:!0});function e(t){const o={};return t.integrity&&(o.integrity=t.integrity),t.referrerPolicy&&(o.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?o.credentials="include":t.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function s(t){if(t.ep)return;t.ep=!0;const o=e(t);fetch(t.href,o)}})();const u="50461526-1c4ae7086be4914a89297c276";async function d(r){const n=`https://pixabay.com/api/?key=${u}&q=${encodeURIComponent(r)}&image_type=photo&orientation=horizontal&safesearch=true`,e=await fetch(n);if(!e.ok)throw new Error("API isteği başarısız");return await e.json()}const f=document.querySelector("#results-container");let i=null;function p(r){const n=r.hits.map(e=>`
+import{a as l,S as u,i as c}from"./assets/vendor-CrlV4O_2.js";(function(){const o=document.createElement("link").relList;if(o&&o.supports&&o.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))i(e);new MutationObserver(e=>{for(const s of e)if(s.type==="childList")for(const n of s.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&i(n)}).observe(document,{childList:!0,subtree:!0});function t(e){const s={};return e.integrity&&(s.integrity=e.integrity),e.referrerPolicy&&(s.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?s.credentials="include":e.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function i(e){if(e.ep)return;e.ep=!0;const s=t(e);fetch(e.href,s)}})();const d="50461526-1c4ae7086be4914a89297c276",p="https://pixabay.com/api/";async function m(r){try{return(await l.get(p,{params:{key:d,q:r,image_type:"photo",orientation:"horizontal",safesearch:!0}})).data.hits}catch(o){throw new Error("API isteği başarısız: "+o.message)}}const f=document.querySelector("#results-container");let a=null;function y(r){const o=r.hits.map(t=>`
     
-      <a class="image-card" href="${e.largeImageURL}">
-        <img src="${e.webformatURL}" alt="${e.tags}" />
+      <a class="image-card" href="${t.largeImageURL}">
+        <img src="${t.webformatURL}" alt="${t.tags}" />
         <div class="image-info">
-          <p class="tags">Tags: ${e.tags}</p>
+          <p class="tags">Tags: ${t.tags}</p>
           <div class="stats">
-            <span>👍 ${e.likes}</span>
-            <span>👁️ ${e.views}</span>
-            <span>💬 ${e.comments}</span>
-            <span>⬇️ ${e.downloads}</span>
+            <span>👍 ${t.likes}</span>
+            <span>👁️ ${t.views}</span>
+            <span>💬 ${t.comments}</span>
+            <span>⬇️ ${t.downloads}</span>
           </div>
         </div>
       </a>
     
-  `).join("");f.insertAdjacentHTML("beforeend",n),i?i.refresh():i=new l("#results-container a",{captionsData:"alt",captionDelay:250,captionPosition:"bottom"})}function m(){const r=document.querySelector("#results-container");r.innerHTML=""}function y(){const r=document.getElementById("loader");r.style.display="block"}function g(){const r=document.getElementById("loader");r.style.display="none"}const h=document.querySelector(".form"),L=document.querySelector(".search-input");h.addEventListener("submit",async r=>{r.preventDefault();const n=L.value.trim();if(n){y(),m();try{const e=await d(n);if(e.hits.length===0){c.warning({title:"Uyarı",message:"Sorry, there are no images matching your search query. Please try again!",position:"topRight"});return}p(e)}catch{c.error({title:"Hata",message:"Bir sorun oluştu. Lütfen daha sonra tekrar deneyin.",position:"topRight"})}finally{g()}}});
+  `).join("");f.insertAdjacentHTML("beforeend",o),a?a.refresh():a=new u("#results-container a",{captionsData:"alt",captionDelay:250,captionPosition:"bottom"})}function g(){const r=document.querySelector("#results-container");r.innerHTML=""}function h(){const r=document.getElementById("loader");r.style.display="block"}function L(){const r=document.getElementById("loader");r.style.display="none"}const b=document.querySelector(".form"),w=document.querySelector(".search-input");b.addEventListener("submit",async r=>{r.preventDefault();const o=w.value.trim();if(o){h(),g();try{const t=await m(o);if(t.hits.length===0){c.warning({title:"Uyarı",message:"Sorry, there are no images matching your search query. Please try again!",position:"topRight"});return}y(t)}catch{c.error({title:"Hata",message:"Bir sorun oluştu. Lütfen daha sonra tekrar deneyin.",position:"topRight"})}finally{L()}}});
 //# sourceMappingURL=index.js.map
